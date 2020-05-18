@@ -1,5 +1,5 @@
 {
-    "name": "react-aligner",
+    "name": "flexbox-explorer",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -20,12 +20,12 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "predeploy": "yarn build",
-        "deploy": "gh-pages -d build",
+        "predeploy": "yarn build && echo 'flexbox-explorer.mbohlen.de' > ./build/CNAME",
+        "deploy": "gh-pages -d ./build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    "homepage": "https://mattes3.github.io/flexbox-explorer",
+    "homepage": "https://flexbox-explorer.mbohlen.de/",
     "eslintConfig": {
         "extends": "react-app"
     },
