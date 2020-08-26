@@ -5,9 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { makeStyles } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 
 const useStyles = makeStyles({
     root: {
@@ -68,13 +67,14 @@ function App() {
         flexDirection,
         justifyContent,
         alignItems,
-        toString() {
-            return ['{', ...Object.keys(this).filter(name => name !== 'toString').map(name => '  ' + name + ': "' + this[name] + '",'), '}'].join('\n');
-        }
     };
 
+    function cssToString(styles: CSSProperties) {
+        return ['{', ...Object.keys(styles).map(name => '  ' + name + ": '" + (styles as any)[name] + "',"), '}'].join('\n');
+    }
+
     const Brick = ({ name, width, height }: { name: any, width: number, height: number }) => (
-        <div className={classes.brick} style={{ minWidth: width, minHeight: height, fontSize: `${height*0.8}px` }}>{name}</div>
+        <div className={classes.brick} style={{ minWidth: width, minHeight: height, fontSize: `${height * 0.8}px` }}>{name}</div>
     );
 
     return <>
@@ -180,7 +180,7 @@ function App() {
                                 .map(i => <Brick key={i} name={i} width={brickWidth[i]} height={brickHeight[i]} />)
                         }
                     </div>
-                    <pre>{containerStyles.toString()}</pre>
+                    <pre>{cssToString(containerStyles)}</pre>
                 </Grid>
             </Grid>
         </div>
