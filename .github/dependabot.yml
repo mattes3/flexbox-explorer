@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@testing-library/jest-dom"
+    versions:
+    - "> 5.11.4"
+  - dependency-name: "@testing-library/react"
+    versions:
+    - "> 10.4.9"
+  - dependency-name: "@types/jest"
+    versions:
+    - "> 26.0.10"
